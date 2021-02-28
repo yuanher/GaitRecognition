@@ -1,0 +1,16 @@
+services:
+  web:
+    image: webapp
+    container_name: webapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./app:/app
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - FLASK_APP=app/main.py
+      - FLASK_DEBUG=1
+      - "RUN=flask run --host=0.0.0.0 --port=80"
